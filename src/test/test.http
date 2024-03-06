@@ -2,3 +2,7 @@ GET http://localhost:8080/myhello
 Accept: application/json
 
 ###
+
+GET http://localhost:8080/people/list
+
+###
