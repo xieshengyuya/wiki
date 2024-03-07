@@ -10,14 +10,14 @@ import javax.annotation.Resource;
 import java.util.List;
 
 @RestController
-public class TestController {
+public class PeopleController {
     @Resource
     private PeopleService peopleService;
 
-    @RequestMapping("/myhello")
-    public String hello(){
-        return "Hello SpringBoot";
-    }
+//    @RequestMapping("/myhello")
+//    public String hello(){
+//        return "Hello SpringBoot";
+//    }
 
     @GetMapping("/people/list")
     public List<People> list(){

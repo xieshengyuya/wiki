@@ -3,6 +3,10 @@ Accept: application/json
 
 ###
 
-GET http://localhost:8080/people/list
+GET http://localhost:8080/ebook/trytry
+
+###
+
+GET http://localhost:8080/ebook/list
 
 ###
