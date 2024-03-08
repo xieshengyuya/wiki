@@ -5,6 +5,7 @@ import com.xie.wiki.domain.EbookExample;
 import com.xie.wiki.mapper.EbookMapper;
 import com.xie.wiki.req.EbookReq;
 import com.xie.wiki.response.EbookResp;
+import com.xie.wiki.util.CopyUtil;
 import org.springframework.beans.BeanUtils;
 import org.springframework.stereotype.Service;
 
@@ -28,13 +29,17 @@ public class EbookService {
         criteria.andNameLike("%"+req.getName()+"%");
         // 获得筛选结果
         List<Ebook> ebookList = ebookMapper.selectByExample(ebookExample);
-        List<EbookResp> ebookRespList = new LinkedList<EbookResp>();
+
+
         // 将筛选结果封装到返回封装类中
-        for(Ebook ebook: ebookList){
-            EbookResp ebookresp = new EbookResp();
-            BeanUtils.copyProperties(ebook, ebookresp);
-            ebookRespList.add(ebookresp);
-        }
+//        List<EbookResp> ebookRespList = new LinkedList<EbookResp>();
+//        for(Ebook ebook: ebookList){
+//            EbookResp ebookresp = new EbookResp();
+//            BeanUtils.copyProperties(ebook, ebookresp);
+//            ebookRespList.add(ebookresp);
+//        }
+
+        List<EbookResp> ebookRespList = CopyUtil.copyList(ebookList, EbookResp.class);
         return ebookRespList;
     }
 
