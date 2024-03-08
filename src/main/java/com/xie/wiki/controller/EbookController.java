@@ -1,19 +1,17 @@
 package com.xie.wiki.controller;
 
 import com.xie.wiki.domain.Ebook;
-import com.xie.wiki.response.CommonResponse;
+import com.xie.wiki.req.EbookReq;
+import com.xie.wiki.response.CommonResp;
+import com.xie.wiki.response.EbookResp;
 import com.xie.wiki.service.EbookService;
+import org.springframework.beans.BeanUtils;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RestController;
 
 import javax.annotation.Resource;
+import java.util.LinkedList;
 import java.util.List;
-
-class Try{
-    public int i;
-    public int j;
-}
-
 
 @RestController
 public class EbookController {
@@ -21,18 +19,17 @@ public class EbookController {
     private EbookService ebookService;
 
     @GetMapping("/ebook/list")
-    public CommonResponse list(){
-        CommonResponse<List<Ebook>> commonResponse = new CommonResponse<>();
-        commonResponse.setContent(ebookService.list());
-        return commonResponse;
+    public CommonResp list(){
+        CommonResp<List<Ebook>> commonResp = new CommonResp<>();
+        commonResp.setContent(ebookService.list());
+        return commonResp;
     }
 
-    @GetMapping("/ebook/trytry")
-    public Try trytry(){
-        Try myTry = new Try();
-        myTry.i = 1;
-        myTry.j = 2;
-
-        return myTry;
+    @GetMapping("/ebook/listWhich")
+    public CommonResp listWhich(EbookReq ebookReq){
+        CommonResp<List<EbookResp>> commonResp = new CommonResp<>();
+        commonResp.setContent(ebookService.listWhich(ebookReq));
+        return commonResp;
     }
+
 }

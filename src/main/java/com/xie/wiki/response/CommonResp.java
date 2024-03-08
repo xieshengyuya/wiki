@@ -1,6 +1,6 @@
 package com.xie.wiki.response;
 
-public class CommonResponse<T> {
+public class CommonResp<T> {
 
     /**
      * 业务上的成功或失败
